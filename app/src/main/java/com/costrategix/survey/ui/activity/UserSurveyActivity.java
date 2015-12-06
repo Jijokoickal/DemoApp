@@ -3,11 +3,13 @@ package com.costrategix.survey.ui.activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.inputmethod.InputMethodManager;
 
 import com.costrategix.survey.R;
 import com.costrategix.survey.access.QuestionAccess;
@@ -69,6 +71,10 @@ public class UserSurveyActivity extends FragmentActivity {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             AppLog.logString("" + position);
+            if (position != 0) {
+                final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(mPager.getWindowToken(), 0);
+            }
         }
 
         @Override

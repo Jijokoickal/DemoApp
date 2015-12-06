@@ -68,6 +68,8 @@ public class ScreenSlidePageFragment extends Fragment {
 
     private List<String> mCountryList;
 
+    private TextView mQuestionNumber;
+
 
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
@@ -108,7 +110,10 @@ public class ScreenSlidePageFragment extends Fragment {
 
     private void initViews(ViewGroup rootView) {
         // Set the title view to show the page number.
-        ((TextView) rootView.findViewById(android.R.id.text1)).setText(getString(R.string.title_template_step, mPageNumber + 1));
+        mQuestionNumber = (TextView) rootView.findViewById(android.R.id.text1);
+
+        mQuestionNumber.setText(getString(R.string.title_template_step, mPageNumber + 1));
+
         ((TextView) rootView.findViewById(R.id.question)).setText(sQuestionDataList.get(mPageNumber).getQuestionText());
 
 
@@ -194,8 +199,6 @@ public class ScreenSlidePageFragment extends Fragment {
             sourceGroup.setOnCheckedChangeListener(sourceChangeListener);
 
             mBtnSubmitSurvey.setOnClickListener(submitListener);
-
-
         }
     }
 
